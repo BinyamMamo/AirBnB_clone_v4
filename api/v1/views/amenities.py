@@ -62,7 +62,7 @@ def post_amenity():
 def put_amenity(amenity_id):
     """
      updates the attributes of an existing
-	 	amenity based on the parameters passed in.
+     amenity based on the parameters passed in.
     """
     amenity = storage.get("Amenity", amenity_id)
     if not amenity:

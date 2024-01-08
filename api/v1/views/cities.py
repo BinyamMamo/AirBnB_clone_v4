@@ -24,7 +24,7 @@ def r_city_id(city_id):
     """
      function - Retrieves a City object based on the ID
      @city_id: The ID of the City to retrieve
-     
+
      Return: JSON representation of the City
     """
     city = storage.get("City", city_id)
@@ -39,7 +39,7 @@ def del_city(city_id):
     """
      function - Delete a city from the database
      @city_id: id of the city to delete
-     
+
      Return: 200 if success 404 if
     """
     city = storage.get("City", city_id)
@@ -56,7 +56,7 @@ def post_city(state_id):
     """
      function - Create a new city.
      @state_id: The id of the state to create a city for.
-     
+
      Return: A JSON representation of the newly created city
     """
     state = storage.get("State", state_id)
@@ -80,7 +80,7 @@ def put_city(city_id):
     """
      function - Update a city. This endpoint is for PUT / cities / { city_id }
      @city_id: id of the city to update
-     
+
      Return: JSON with updated city or
     """
     city = storage.get("City", city_id)

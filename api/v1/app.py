@@ -5,10 +5,9 @@ registers blueprints for the API routes
 defines a teardown function to close the app session,
 and an error handler for 404 errors.
 """
+from api.v1.views import app_views
 from flask import Flask, jsonify
 from models import storage
-from api.v1.views.index import app_views
-# from api.v1.views.index import app_views
 from os import getenv
 
 app = Flask(__name__)

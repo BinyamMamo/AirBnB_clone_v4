@@ -3,9 +3,9 @@
 Retrieve default API actions for Place and Amenity view objects link.
 """
 from api.v1.views import app_views
+from flasgger import Swagger
 from flask import Flask, jsonify, abort, make_response, request
 from flask_cors import CORS
-from flasgger import Swagger
 from models import storage
 from os import getenv
 

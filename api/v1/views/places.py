@@ -145,8 +145,9 @@ def places_search():
         HBNB_API_HOST = getenv('HBNB_API_HOST')
         HBNB_API_PORT = getenv('HBNB_API_PORT')
 
+        host = "0.0.0.0" if not HBNB_API_HOST else HBNB_API_HOST
         port = 5000 if not HBNB_API_PORT else HBNB_API_PORT
-        first_url = "http://0.0.0.0:{}/api/v1/places/".format(port)
+        first_url = "http://{}:{}/api/v1/places/".format(host, port)
         while i < limit:
             place = places[i]
             url = first_url + '{}/amenities'

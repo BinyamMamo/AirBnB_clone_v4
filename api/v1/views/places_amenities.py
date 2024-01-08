@@ -18,6 +18,7 @@ def places_amenities(place_id):
     if not place:
         abort(404)
 
+    place_amenities = []
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         place_amenities = [amenity.to_dict() for amenity in place.amenities]
     else:

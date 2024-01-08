@@ -6,7 +6,7 @@ defines a teardown function to close the app session,
 and an error handler for 404 errors.
 """
 from api.v1.views import app_views
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from models import storage
 from os import getenv
 
@@ -26,10 +26,12 @@ def close_session(exception):
 def not_found(err):
     """returns a JSON response with an error message and a status code of 404.
     """
-    return jsonify({'error': 'Not found'}), 404
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 if __name__ == "__main__":
     HBNB_API_HOST = getenv("HBNB_API_HOST")
     HBNB_API_PORT = getenv("HBNB_API_PORT")
-    app.run(host=HBNB_API_HOST, port=HBNB_API_PORT, threaded=True)
+    host = '0.0.0.0' if not HBNB_API_HOST else HBNB_API_HOST
+    port = 5000 if not HBNB_API_PORT else HBNB_API_PORT
+    app.run(host=host, port=port, threaded=True)

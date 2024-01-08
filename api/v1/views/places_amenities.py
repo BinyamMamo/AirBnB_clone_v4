@@ -21,10 +21,11 @@ def places_amenities(place_id):
         abort(404)
 
     if getenv('HBNB_TYPE_STORAGE') == 'db':
-        l = [amenity.to_dict() for amenity in place.amenities]
+        place_amenities = [amenity.to_dict() for amenity in place.amenities]
     else:
-        l = [storage.get("Amenity", id).to_dict() for id in place.amenity_ids]
-    return jsonify(l)
+        place_amenities = [storage.get("Amenity", id).to_dict()
+                           for id in place.amenity_ids]
+    return jsonify(place_amenities)
 
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',

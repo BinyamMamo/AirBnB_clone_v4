@@ -3,35 +3,9 @@
 Retrieve default API actions for Place and Amenity view objects link.
 """
 from api.v1.views import app_views
-from flasgger import Swagger
-from flask import Flask, jsonify, abort, make_response, request
-from flask_cors import CORS
+from flask import jsonify, abort, make_response, request
 from models import storage
 from os import getenv
-
-
-app = Flask(__name__)
-app.register_blueprint(app_views)
-CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
-app.config['SWAGGER'] = {
-    "swagger_version": "2.0",
-    "title": "Flasgger",
-    "headers": [
-        ('Access-Control-Allow-Origin', '*'),
-        ('Access-Control-Allow-Methods', "GET, POST, PUT, DELETE, OPTIONS"),
-        ('Access-Control-Allow-Credentials', "true"),
-    ],
-    "specs": [
-        {
-            "version": "1.0",
-            "title": "HBNB API",
-            "endpoint": 'v1_views',
-            "description": 'HBNB REST API',
-            "route": '/v1/views',
-        }
-    ]
-}
-swagger = Swagger(app)
 
 
 @app_views.route('/places/<place_id>/amenities', methods=['GET'],

@@ -1,0 +1,28 @@
+/*
+ * === Header style ===
+ */
+
+/* Header style */
+header {
+  background: #fff url('../images/logo.png') 20px center no-repeat;
+  border-bottom: 1px solid #ccc;
+  height: 70px;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+header div#api_status {
+  height: 40px;
+  width: 40px;
+  display: block;
+  position: absolute;
+  right: 30px;
+  border-radius: 50%;
+  top: calc(50% - calc(40px / 2));
+  background-color: #ccc;
+}
+
+.available {
+  background-color: #ff545f !important;
+}

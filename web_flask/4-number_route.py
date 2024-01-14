@@ -1,41 +1,80 @@
 #!/usr/bin/python3
+"""uses flask to display text
 """
-starts a Flask web application
-"""
-
 from flask import Flask
+
+
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def index():
-    """returns Hello HBNB!"""
-    return 'Hello HBNB!'
+def hello_hbnb():
+    """return the string "Hello HBNB!".
+    """
+    return ("Hello HBNB!")
 
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    """returns HBNB"""
-    return 'HBNB'
+    """return the string "HBNB"
+    """
+    return ("HBNB")
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def cisfun(text):
-    """display “C ” followed by the value of the text variable"""
-    return 'C ' + text.replace('_', ' ')
+def c_is_(text):
+    """
+    The function hbnb takes a string as input and returns
+       a modified version of the string by replacing
+       underscores with spaces and adding a "C " prefix.
+
+    Args:
+      text: The text parameter is a string that
+                represents a sentence or phrase.
+
+    Returns:
+      a string that starts with "C " and replaces all underscores
+      in the input text with spaces.
+    """
+    return ("C " + text.replace("_", " "))
 
 
-@app.route('/python', strict_slashes=False)
+@app.route('/python/', defaults={"text": "is cool"})
 @app.route('/python/<text>', strict_slashes=False)
-def pythoniscool(text='is cool'):
-    """display “Python ”, followed by the value of the text variable"""
-    return 'Python ' + text.replace('_', ' ')
+def python_is_(text):
+    """
+    The function hbnb takes a string as input and returns
+       a modified version of the string by replacing
+       underscores with spaces and adding a "Python " prefix.
+
+    Args:
+      text: The text parameter is a string that
+                represents a sentence or phrase.
+
+    Returns:
+      a string that starts with "Python " and replaces all underscores
+      in the input text with spaces.
+    """
+    return ("Python " + text.replace("_", " "))
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def imanumber(n):
-    """display “n is a number” only if n is an integer"""
-    return "{:d} is a number".format(n)
+def number_is_(n):
+    """
+    The function hbnb takes a string as input and returns
+       a modified version of the string by replacing
+       underscores with spaces and adding a "Python " prefix.
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000')
+    Args:
+      text: The text parameter is a string that
+                represents a sentence or phrase.
+
+    Returns:
+      a string that starts with "Python " and replaces all underscores
+      in the input text with spaces.
+    """
+    return (f"{n} is a number")
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
